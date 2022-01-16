@@ -21,64 +21,64 @@
                 COLEMAK {
                         label = "Colemak";
                         bindings = <
-&mt RBKT LBKT,         &kp Q,             &kp W,             &kp F,             &kp P,             &kp B,                                &kp J,             &kp L,             &kp U,             &kp Y,             &kp SQT,        &mt AMPS PIPE,
-&mt RPAR LPAR,         &hm LGUI A,        &hm LALT R,        &hm LCTRL S,       &hm LSHFT T,       &kp G,                                &kp M,             &hm LSHFT N,       &hm LCTRL E,       &hm LALT I,        &hm LGUI O,     &mt COLON SEMI,
-&mt LS(RBKT) LS(LBKT)  &kp Z,             &hm RALT X,        &kp C,             &kp D,             &kp V,                                &kp K,             &kp H,             &kp COMMA,         &kp DOT,           &kp SLASH,      &mt MINUS PLUS,
-                                                             &hto QWERTY ESC,   &lt NUM TAB,       &lt NAV SPC,                          &lt SYM BSPC,      &lt FUN RET,       &kp DEL
+&mt RBKT LBKT          &kp Q              &kp W              &kp F              &kp P              &kp B                                 &kp J              &kp L              &kp U              &kp Y              &kp SQT         &mt AMPS PIPE
+&mt RPAR LPAR          &hm LGUI A         &hm LALT R         &hm LCTRL S        &hm LSHFT T        &kp G                                 &kp M              &hm LSHFT N        &hm LCTRL E        &hm LALT I         &hm LGUI O      &mt COLON SEMI
+&mt LS(RBKT) LS(LBKT)  &kp Z              &hm RALT X         &kp C              &kp D              &kp V                                 &kp K              &kp H              &kp COMMA          &kp DOT            &kp SLASH       &mt MINUS PLUS
+                                                             &hto QWERTY ESC    &lt NUM TAB        &lt NAV SPC                           &lt SYM BSPC       &lt FUN RET        &kp DEL
                         >;
                 };
                 QWERTY {
                         label = "Qwerty";
                         bindings = <
-&mt RBKT LBKT,         &kp Q,             &kp W,             &kp E,             &kp R,             &kp T,                                &kp Y,             &kp U,             &kp I,             &kp O,             &kp P,          &mt AMPS PIPE,
-&mt RPAR LPAR,         &hm LGUI A,        &hm LALT S,        &hm LCTRL D,       &hm LSHFT F,       &kp G,                                &kp H,             &hm LSHFT J,       &hm LCTRL K,       &hm LALT L,        &hm LGUI SQT,   &mt COLON SEMI,
-&mt LS(RBKT) LS(LBKT)  &kp Z,             &hm RALT X,        &kp C,             &kp V,             &kp B,                                &kp N,             &kp M,             &kp COMMA,         &kp DOT,           &kp SLASH,      &mt MINUS PLUS,
-                                                             &hto GAME ESC,     &lt NUM TAB,       &lt NAV SPC,                          &lt SYM BSPC,      &lt FUN RET,       &kp DEL
+&mt RBKT LBKT          &kp Q              &kp W              &kp E              &kp R              &kp T                                 &kp Y              &kp U              &kp I              &kp O              &kp P           &mt AMPS PIPE
+&mt RPAR LPAR          &hm LGUI A         &hm LALT S         &hm LCTRL D        &hm LSHFT F        &kp G                                 &kp H              &hm LSHFT J        &hm LCTRL K        &hm LALT L         &hm LGUI SQT    &mt COLON SEMI
+&mt LS(RBKT) LS(LBKT)  &kp Z              &hm RALT X         &kp C              &kp V              &kp B                                 &kp N              &kp M              &kp COMMA          &kp DOT            &kp SLASH       &mt MINUS PLUS
+                                                             &hto GAME ESC      &lt NUM TAB        &lt NAV SPC                           &lt SYM BSPC       &lt FUN RET        &kp DEL
                         >;
                 };
                 GAME {
                         label = "Game";
                         bindings = <
-&none,                 &kp Q,             &kp W,             &kp E,             &kp R,             &kp T,                                &kp Y,             &kp U,             &kp I,             &kp O,             &kp P,          &mt AMPS PIPE,
-&none,                 &kp A,             &kp S,             &kp D,             &kp F,             &kp G,                                &kp H,             &kp J,             &kp K,             &kp L,             &kp SQT,        &mt COLON SEMI,
-&kp LSHIFT             &kp Z,             &hm RALT X,        &kp C,             &kp V,             &kp B,                                &kp N,             &kp M,             &kp COMMA,         &kp DOT,           &kp SLASH,      &mt MINUS PLUS,
-                                                             &hto COLEMAK ESC,  &kp LCTRL,         &kp SPC,                              &kp BSPC,          &kp RET,           &kp DEL
+&none                  &kp Q              &kp W              &kp E              &kp R              &kp T                                 &kp Y              &kp U              &kp I              &kp O              &kp P           &mt AMPS PIPE
+&none                  &kp A              &kp S              &kp D              &kp F              &kp G                                 &kp H              &kp J              &kp K              &kp L              &kp SQT         &mt COLON SEMI
+&kp LSHIFT             &kp Z              &hm RALT X         &kp C              &kp V              &kp B                                 &kp N              &kp M              &kp COMMA          &kp DOT            &kp SLASH       &mt MINUS PLUS
+                                                             &hto COLEMAK ESC   &kp LCTRL          &kp SPC                               &kp BSPC           &kp RET            &kp DEL
                         >;
                 };
                 NAV {
                         label = "Nav";
                         bindings = <
-&out OUT_TOG,          &none,             &none,             &none,             &none,             &kp CAPS,                             &kp INS,           &kp PG_UP,         &kp UP,            &none,             &none,          &none,
-&none,                 &kp LGUI,          &kp LALT,          &kp LCTRL,         &kp LSHFT,         &none,                                &kp HOME,          &kp LEFT,          &kp DOWN,          &kp RIGHT,         &kp END,        &none,
-&none,                 U_UNDO,            U_CUT,             U_CPY,             U_PST,             U_RDO,                                &none,             &kp PG_DN,         &none,             &none,             &none,          &none,
-                                                             &none,             &none,             &none,                                &kp BSPC,          &kp RET,           &kp DEL
+&out OUT_TOG           &none              &none              &none              &none              &kp CAPS                              &kp INS            &kp PG_UP          &kp UP             &none              &none           &none
+&none                  &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                                 &kp HOME           &kp LEFT           &kp DOWN           &kp RIGHT          &kp END         &none
+&none                  U_UNDO             U_CUT              U_CPY              U_PST              U_RDO                                 &none              &kp PG_DN          &none              &none              &none           &none
+                                                             &none              &none              &none                                 &kp BSPC           &kp RET            &kp DEL
                         >;
                 };
                 NUM {
                         label = "Number";
                         bindings = <
-&bootloader,           &none,             &none,             &none,             &none,             &none,                                &kp LBKT,          &kp NUM_7,         &kp NUM_8,         &kp NUM_9,         &kp RBKT,        &none,
-&none,                 &kp LGUI,          &kp LALT,          &kp LCTRL,         &kp LSHFT,         &none,                                &kp EQL,           &kp NUM_4,         &kp NUM_5,         &kp NUM_6,         &kp SEMI,        &none,
-&none,                 U_UNDO,            U_CUT,             U_CPY,             U_PST,             U_RDO,                                &kp BSLH,          &kp NUM_1,         &kp NUM_2,         &kp NUM_3,         &kp GRAVE,       &none,
-                                                             &none,             &none,             &none,                                &kp MINUS,         &kp NUM_0,         &kp DOT
+&bootloader            &none              &none              &none              &none              &none                                 &kp LBKT           &kp NUM_7          &kp NUM_8          &kp NUM_9          &kp RBKT         &none
+&none                  &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                                 &kp EQL            &kp NUM_4          &kp NUM_5          &kp NUM_6          &kp SEMI         &none
+&none                  U_UNDO             U_CUT              U_CPY              U_PST              U_RDO                                 &kp BSLH           &kp NUM_1          &kp NUM_2          &kp NUM_3          &kp GRAVE        &none
+                                                             &none              &none              &none                                 &kp MINUS          &kp NUM_0          &kp DOT
                         >;
                 };
                 SYM {
                         label = "Symbol";
                         bindings = <
-&none,                 &kp LBRC,          &kp AMPS,          &kp ASTRK,         &kp LPAR,          &kp RBRC,                             &kp C_MUTE,        &kp C_VOL_DN,      &kp C_VOL_UP,      &kp C_PP,          &kp C_STOP,     &kp C_MENU,
-&none,                 &kp COLON,         &kp DLLR,          &kp PRCT,          &kp CRRT,          &kp PLUS,                             &none,             &kp LSHFT,         &kp LCTRL,         &kp LALT,          &kp LGUI,       &none,
-&none,                 &kp TILDE,         &kp EXCL,          &kp AT,            &kp HASH,          &kp PIPE,                             &none,             &kp C_PREV,        &kp K_NEXT,        &kp C_RW,          &kp C_FF,       &none,
-                                                             &kp LPAR,          &kp RPAR,          &kp UNDER,                            &none,             &none,             &none
+&none                  &kp LBRC           &kp AMPS           &kp ASTRK          &kp LPAR           &kp RBRC                              &kp C_MUTE         &kp C_VOL_DN       &kp C_VOL_UP       &kp C_PP           &kp C_STOP      &kp C_MENU
+&none                  &kp COLON          &kp DLLR           &kp PRCT           &kp CRRT           &kp PLUS                              &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI        &none
+&none                  &kp TILDE          &kp EXCL           &kp AT             &kp HASH           &kp PIPE                              &none              &kp C_PREV         &kp K_NEXT         &kp C_RW           &kp C_FF        &none
+                                                             &kp LPAR           &kp RPAR           &kp UNDER                             &none              &none              &none
                         >;
                 };
                 FUN {
                         label = "Func";
                         bindings = <
-&none,                 &kp F12,           &kp F7,            &kp F8,            &kp F9,            &kp PSCRN,                            &bt BT_SEL 0,      &bt BT_SEL 1,      &bt BT_SEL 2,      &bt BT_SEL 3,      &none,          &bt BT_CLR,
-&none,                 &kp F11,           &kp F4,            &kp F5,            &kp F6,            &kp SLCK,                             &none,             &kp LSHFT,         &kp LCTRL,         &kp LALT,          &kp LGUI,       &none,
-&none,                 &kp F10,           &kp F1,            &kp F2,            &kp F3,            &kp PAUSE_BREAK,                      &none,             &none,             &none,             &none,             &none,          &none,
-                                                             &kp K_APP,         &kp SPC,           &kp TAB,                              &none,             &none,             &none
+&kp K_APP              &kp F9             &kp F10            &kp F11            &kp F12            &kp PSCRN                             &bt BT_SEL 0       &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &none           &bt BT_CLR
+&none                  &kp F5             &kp F6             &kp F7             &kp F8             &kp SLCK                              &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI        &none
+&none                  &kp F1             &kp F2             &kp F3             &kp F4             &kp PAUSE_BREAK                       &none              &none              &none              &none              &none           &none
+                                                             &kp ESC            &kp TAB            &kp SPC                               &none              &none              &none
                         >;
                 };
         };
