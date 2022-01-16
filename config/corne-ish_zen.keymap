@@ -15,6 +15,14 @@
 #define U_CUT &kp LC(X)
 #define U_UND &kp LC(Z)
 
+#define COLEMAK 0
+#define QWERTY 1
+#define GAME 2
+#define NAV 3
+#define NUM 4
+#define SYM 5
+#define FUN 6
+
 / {
         keymap {
                 compatible = "zmk,keymap";
