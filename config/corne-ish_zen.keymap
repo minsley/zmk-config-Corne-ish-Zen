@@ -69,7 +69,7 @@
                 FUN {
                         label = "Func";
                         bindings = <
-&none,                 &kp F12,           &kp F7,            &kp F8,            &kp F9,            &kp PSCRN,                            &bt BT_CLR,        &bt BT_SEL 0,      &bt BT_SEL 1,      &bt BT_SEL 2,      &bt BT_SEL 3,   &none,
+&none,                 &kp F12,           &kp F7,            &kp F8,            &kp F9,            &kp PSCRN,                            &bt BT_SEL 0,      &bt BT_SEL 1,      &bt BT_SEL 2,      &bt BT_SEL 3,      &none,          &bt BT_CLR,
 &none,                 &kp F11,           &kp F4,            &kp F5,            &kp F6,            &kp SLCK,                             &none,             &kp LSHFT,         &kp LCTRL,         &kp LALT,          &kp LGUI,       &none,
 &none,                 &kp F10,           &kp F1,            &kp F2,            &kp F3,            &kp PAUSE_BREAK,                      &none,             &none,             &none,             &none,             &none,          &none,
                                                              &kp K_APP,         &kp SPC,           &kp TAB,                              &none,             &none,             &none
@@ -84,7 +84,7 @@
       compatible = "zmk,behavior-hold-tap";
       label = "HOMEROW_MODS";
       #binding-cells = <2>;
-      tapping_term_ms = <U_TAPPING_TERM>;
+      tapping_term_ms = <250>;
       flavor = "tap-preferred";
       bindings = <&kp>, <&kp>;
     };
@@ -92,7 +92,7 @@
       compatible = "zmk,behavior-hold-tap";
       label = "HOLD TO";
       #binding-cells = <2>;
-      tapping_term_ms = <500>;
+      tapping_term_ms = <350>;
       flavor = "tap-preferred";
       bindings = <&to>, <&kp>;
     };
