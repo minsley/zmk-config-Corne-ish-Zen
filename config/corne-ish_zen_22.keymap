@@ -12,6 +12,10 @@
 
 #define ALPHA1 0
 #define ALPHA2 1
+#define NUM 0
+#define NAV 0
+#define SYM 0
+#define FUN 0
 
 / {
         keymap {
