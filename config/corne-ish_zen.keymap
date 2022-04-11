@@ -1,10 +1,3 @@
-/*
-*
-* Copyright (c) 2021 Darryl deHaan
-* SPDX-License-Identifier: MIT
-*
-*/
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
@@ -24,72 +17,120 @@
 #define SYM 5
 #define FUN 6
 
+/*
+*
+* Rules:
+* 1) layer changes are due to holding thumb keys
+* 2) avoid having to hold multiple keys like sym+shift, e.g. (sym+shift+",") should be avoided infavor of (sym+"<")
+* 3) outer columns should match what you'd put on pinky top row in a pure 3 row setup
+* 4) while holding a left thumb, primary actions should be on right hand & vice versa
+* 5) home row mods are only on the base layer
+* 6) thumb tap actions should remain consistent on all layers unless being overriden by a primary action
+* 7) avoid duplicates - decisions are bad, KC_NO is fine
+* 8) arrange open/close and left/right things horizontally, up/down things vertically
+*/
+
 / {
         keymap {
                 compatible = "zmk,keymap";
                 COLEMAK {
                         label = "Colemak";
                         bindings = <
-&mt RBKT LBKT          &kp Q              &kp W              &kp F              &kp P              &kp B                                 &kp J              &kp L              &kp U              &kp Y              &kp SQT         &mt AMPS PIPE
-&mt RPAR LPAR          &hm LGUI A         &hm LALT R         &hm LCTRL S        &hm LSHFT T        &kp G                                 &kp M              &hm LSHFT N        &hm LCTRL E        &hm LALT I         &hm LGUI O      &mt COLON SEMI
-&mt LS(RBKT) LS(LBKT)  &kp Z              &hm RALT X         &kp C              &kp D              &kp V                                 &kp K              &kp H              &kp COMMA          &kp DOT            &kp SLASH       &mt MINUS PLUS
-                                                             &hto QWERTY ESC    &lt NUM TAB        &lt NAV SPC                           &lt SYM BSPC       &lt FUN RET        &kp DEL
-                        >;
-                };
-                QWERTY {
-                        label = "Qwerty";
-                        bindings = <
-&mt RBKT LBKT          &kp Q              &kp W              &kp E              &kp R              &kp T                                 &kp Y              &kp U              &kp I              &kp O              &kp P           &mt AMPS PIPE
-&mt RPAR LPAR          &hm LGUI A         &hm LALT S         &hm LCTRL D        &hm LSHFT F        &kp G                                 &kp H              &hm LSHFT J        &hm LCTRL K        &hm LALT L         &hm LGUI SQT    &mt COLON SEMI
-&mt LS(RBKT) LS(LBKT)  &kp Z              &hm RALT X         &kp C              &kp V              &kp B                                 &kp N              &kp M              &kp COMMA          &kp DOT            &kp SLASH       &mt MINUS PLUS
-                                                             &hto GAME ESC      &lt NUM TAB        &lt NAV SPC                           &lt SYM BSPC       &lt FUN RET        &kp DEL
-                        >;
-                };
-                GAME {
-                        label = "Game";
-                        bindings = <
-&none                  &kp Q              &kp W              &kp E              &kp R              &kp T                                 &kp Y              &kp U              &kp I              &kp O              &kp P           &mt AMPS PIPE
-&none                  &kp A              &kp S              &kp D              &kp F              &kp G                                 &kp H              &kp J              &kp K              &kp L              &kp SQT         &mt COLON SEMI
-&kp LSHIFT             &kp Z              &hm RALT X         &kp C              &kp V              &kp B                                 &kp N              &kp M              &kp COMMA          &kp DOT            &kp SLASH       &mt MINUS PLUS
-                                                             &hto COLEMAK ESC   &kp LCTRL          &kp SPC                               &kp BSPC           &kp RET            &kp DEL
-                        >;
-                };
-                NAV {
-                        label = "Nav";
-                        bindings = <
-&out OUT_TOG           &none              &none              &none              &none              &kp CAPS                              &kp INS            &kp PG_UP          &kp UP             &none              &none           &none
-&none                  &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                                 &kp HOME           &kp LEFT           &kp DOWN           &kp RIGHT          &kp END         &none
-&none                  U_UND              U_CUT              U_CPY              U_PST              U_RDO                                 &none              &kp PG_DN          &none              &none              &none           &none
-                                                             &none              &none              &none                                 &kp BSPC           &kp RET            &kp DEL
-                        >;
-                };
-                NUM {
-                        label = "Number";
-                        bindings = <
-&bootloader            &none              &none              &none              &none              &none                                 &kp LBKT           &kp NUM_7          &kp NUM_8          &kp NUM_9          &kp RBKT         &none
-&none                  &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                                 &kp EQL            &kp NUM_4          &kp NUM_5          &kp NUM_6          &kp SEMI         &none
-&none                  U_UND              U_CUT              U_CPY              U_PST              U_RDO                                 &kp BSLH           &kp NUM_1          &kp NUM_2          &kp NUM_3          &kp GRAVE        &none
-                                                             &none              &none              &none                                 &kp MINUS          &kp NUM_0          &kp DOT
-                        >;
-                };
-                SYM {
-                        label = "Symbol";
-                        bindings = <
-&none                  &kp LBRC           &kp AMPS           &kp ASTRK          &kp LPAR           &kp RBRC                              &kp C_MUTE         &kp C_VOL_DN       &kp C_VOL_UP       &kp C_PP           &kp C_STOP      &kp C_MENU
-&none                  &kp COLON          &kp DLLR           &kp PRCT           &kp CRRT           &kp PLUS                              &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI        &none
-&none                  &kp TILDE          &kp EXCL           &kp AT             &kp HASH           &kp PIPE                              &none              &kp C_PREV         &kp K_NEXT         &kp C_RW           &kp C_FF        &none
-                                                             &kp LPAR           &kp RPAR           &kp UNDER                             &none              &none              &none
-                        >;
-                };
-                FUN {
-                        label = "Func";
-                        bindings = <
-&kp K_APP              &kp F12            &kp F7             &kp F8             &kp F9             &kp PSCRN                             &bt BT_SEL 0       &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &none           &bt BT_CLR
-&none                  &kp F11            &kp F4             &kp F5             &kp F6             &kp SLCK                              &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI        &none
-&none                  &kp F10            &kp F1             &kp F2             &kp F3             &kp PAUSE_BREAK                       &none              &none              &none              &none              &none           &none
-                                                             &kp ESC            &kp TAB            &kp SPC                               &none              &none              &none
-                        >;
-                };
+/* ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗        ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗ */
+     &none                  &none              &kp W              &kp F              &kp P              &kp V                       &kp J              &kp L              &kp U                &kp Y               &none                &none
+/* ╔═════════════════╦═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╦═════════════════╗ */
+     &hto QWERTY Q          &hm LGUI A         &hm LALT R         &hm LCTRL S        &hm LSHFT T        &kp G                       &kp M              &hm LSHFT N        &hm LCTRL E          &hm LALT I          &hm LGUI O       &hto GAME SEMI
+/* ╚═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╝ */
+     &none                  &kp Z              &hm RALT X         &kp C              &kp D              &kp B                       &kp K              &kp H              &kp COMMA            &kp DOT             &kp QUESTION         &none
+/* ╚═════════════════╩═══════════════════╩═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╩═══════════════════╩═════════════════╝ */
+                                                                  &none              &lt NUM TAB        &lt NAV SPC                 &lt SYM RET        &lt FUN BSPC       &none
+/*                                                           ╚═══════════════════╩═══════════════════╩═════════════════╝        ╚═════════════════╩═══════════════════╩═══════════════════╝                                                           */
+                             >;
+                     };
+                     QWERTY {
+                             label = "Qwerty";
+                             bindings = <
+/* ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗        ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗ */
+     &none                  &none              &kp W              &kp E              &kp R              &kp T                       &kp Y              &kp U              &kp I              &kp O                &none                &none
+/* ╔═════════════════╦═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╦═════════════════╗ */
+     &hto COLEMAK Q         &hm LGUI A         &hm LALT S         &hm LCTRL D        &hm LSHFT F        &kp G                       &kp H              &hm LSHFT J        &hm LCTRL K        &hm LALT L         &hm LGUI COLON         &kp P
+/* ╚═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╝ */
+     &none                  &kp Z              &hm RALT X         &kp C              &kp V              &kp B                       &kp N              &kp M              &kp COMMA          &kp DOT            &kp QUESTION           &none
+/* ╚═════════════════╩═══════════════════╩═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╩═══════════════════╩═════════════════╝ */
+                                                                  &none              &lt NUM TAB        &lt NAV SPC                 &lt SYM RET        &lt FUN BSPC       &none
+/*                                                           ╚═══════════════════╩═══════════════════╩═════════════════╝        ╚═════════════════╩═══════════════════╩═══════════════════╝                                                           */
+                             >;
+                     };
+                     GAME {
+                             label = "Game";
+                             bindings = <
+/* ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗        ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗ */
+     &none                  &none              &kp Q              &kp W              &kp E              &none                       &none              &kp NUM_7          &kp NUM_8          &kp NUM_9              &none                &none
+/* ╔═════════════════╦═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╦═════════════════╗ */
+     &kp TILDE              &kp LSHFT          &kp A              &kp S              &kp D              &none                       &none              &kp NUM_4          &kp NUM_5          &kp NUM_6              &none            &to COLEMAK
+/* ╚═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╝ */
+     &none                  &kp LCTRL          &kp Z              &kp X              &kp C              &none                       &none              &kp NUM_1          &kp NUM_2          &kp NUM_3              &none                &none
+/* ╚═════════════════╩═══════════════════╩═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╩═══════════════════╩═════════════════╝ */
+                                                                  &none              &kp TAB            &kp SPC                     &none              &kp NUM_0          &none
+/*                                                           ╚═══════════════════╩═══════════════════╩═════════════════╝        ╚═════════════════╩═══════════════════╩═══════════════════╝                                                           */
+                             >;
+                     };
+                     NAV {
+                             label = "Nav";
+                             bindings = <
+/* ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗        ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗ */
+     &none                  &none              &none              &none              &none              &kp CAPS                    &kp PG_UP          &kp INS            &kp UP             &kp DEL            &none                &none
+/* ╔═════════════════╦═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╦═════════════════╗ */
+     &kp ESC                &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                       &kp PG_DN          &kp LEFT           &kp DOWN           &kp RIGHT          &none                &kp K_APP
+/* ╚═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╝ */
+     &none                  U_UND              U_CUT              U_CPY              U_PST              U_RDO                       &kp HOME           &kp END            &none              &none              &none                &none
+/* ╚═════════════════╩═══════════════════╩═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╩═══════════════════╩═════════════════╝ */
+                                                                  &none              &none              &none                       &kp RET            &kp BSPC           &none
+/*                                                           ╚═══════════════════╩═══════════════════╩═════════════════╝        ╚═════════════════╩═══════════════════╩═══════════════════╝                                                           */
+                             >;
+                     };
+                     NUM {
+                             label = "Number";
+                             bindings = <
+/* ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗        ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗ */
+     &none                  &none              &none              &none              &none              &none                       &kp KP_DIVIDE      &kp NUM_7          &kp NUM_8          &kp NUM_9            &none                 &none
+/* ╔═════════════════╦═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╦═════════════════╗ */
+     &none                  &kp LGUI           &kp LALT           &kp LCTRL          &kp LSHFT          &none                       &kp KP_COMMA       &kp NUM_4          &kp NUM_5          &kp NUM_6          &kp KP_PLUS         &kp KP_MINUS
+/* ╚═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╝ */
+     &none                  &none              &none              &none              &none              &none                       &kp KP_DOT         &kp NUM_1          &kp NUM_2          &kp NUM_3          &kp KP_MULTIPLY         &none
+/* ╚═════════════════╩═══════════════════╩═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╩═══════════════════╩═════════════════╝ */
+                                                                  &none              &none              &none                       &kp KP_ENTER       &kp NUM_0           &none
+/*                                                           ╚═══════════════════╩═══════════════════╩═════════════════╝        ╚═════════════════╩═══════════════════╩═══════════════════╝                                                           */
+                             >;
+                     };
+                     SYM {
+                             label = "Symbol";
+                             bindings = <
+/* ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗        ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗ */
+     &none                  &none              &kp TILDE          &kp LPAR           &kp RPAR           &kp DQT                   &kp EXCLAMATION      &kp AT_SIGN        &kp HASH           &kp DOLLAR             &none              &none
+/* ╔═════════════════╦═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╦═════════════════╗ */
+     &kp GRAVE              &kp SLASH          &kp BACKSLASH      &kp LBRC           &kp RBRC           &kp SQT                     &kp PERCENT        &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI              &kp CARET
+/* ╚═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╝ */
+     &none                  &none              &none              &kp LBKT           &kp RBKT           &kp UNDERSCORE              &kp AMPERSAND      &kp C_PREV         &kp K_NEXT         &kp C_RW           &kp PIPE               &none
+/* ╚═════════════════╩═══════════════════╩═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╩═══════════════════╩═════════════════╝ */
+                                                                  &none              &kp TAB            &kp SPC                     &none              &none               &none
+/*                                                           ╚═══════════════════╩═══════════════════╩═════════════════╝        ╚═════════════════╩═══════════════════╩═══════════════════╝                                                           */
+                             >;
+                     };
+                     FUN {
+                             label = "Func";
+                             bindings = <
+/* ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗        ╔═════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═══════════════════╦═════════════════╗ */
+     &none                  &none              &kp F7             &kp F8             &kp F9             &kp PRINTSCREEN             &kp C_MUTE      &kp C_VOLUME_DOWN     &kp C_VOLUME_UP    &kp C_PLAY_PAUSE       &none                &none
+/* ╔═════════════════╦═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╦═════════════════╗ */
+     &kp F12                &kp F11            &kp F4             &kp F5             &kp F6             &kp SCROLLLOCK              &kp C_NEXT         &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI             &bt BT_CLR
+/* ╚═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╝ */
+     &none                  &kp F10            &kp F1             &kp F2             &kp F3             &kp PAUSE_BREAK             &kp C_PREV         &kp C_REWIND     &kp C_FAST_FORWARD   &bt BT_PRV         &bt BT_NXT               &none
+/* ╚═════════════════╩═══════════════════╩═══════════════════╬═══════════════════╬═══════════════════╬═════════════════╣        ╠═════════════════╬═══════════════════╬═══════════════════╬═══════════════════╩═══════════════════╩═════════════════╝ */
+                                                                                     &kp TAB            &kp SPC                     &none              &none                &none
+/*                                                           ╚═══════════════════╩═══════════════════╩═════════════════╝        ╚═════════════════╩═══════════════════╩═══════════════════╝                                                           */
+                             >;
+                     };
         };
         behaviors {
                 hm: homerow_mods {
